@@ -31,8 +31,8 @@ Deployment: Vercel (Frontend), Render (Backend)
 4. Suggestions are returned to frontend.
 
 ## Future Scope
-1.AI-based Sentiment Analysis Integrate advanced NLP models to detect positive, negative, or neutral tone for better engagement suggestions.
-2.Hashtag & Keyword Optimization Suggest trending hashtags using APIs from platforms like Instagram or Twitter (X).
-3.User Authentication System Add login/signup so users can save past analyses.
-4.Multi-language Support Add OCR + text analysis for multiple languages.
-5.Direct Social Media Integration Allow users to directly post optimized content from the platform.
+1.AI-based Sentiment Analysis.
+2.Hashtag & Keyword Optimization.
+3.User Authentication system.
+4.Multi-language Support.
+5.Direct Social Media Integration.
