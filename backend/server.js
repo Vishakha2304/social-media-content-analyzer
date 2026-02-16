@@ -10,15 +10,15 @@ const analyzeText = require("./utils/analyzeText");
 const app = express();
 app.use(cors());
 
-// Multer setup for file upload
+
 const upload = multer({
   dest: "uploads/",
 });
 
-// Upload API
+
 app.post("/upload", upload.single("file"), async (req, res) => {
   try {
-    // Check file existence
+    
     if (!req.file) {
       return res.status(400).json({
         error: "File not received",
@@ -30,20 +30,20 @@ app.post("/upload", upload.single("file"), async (req, res) => {
 
     let extractedText = "";
 
-    // ================= PDF Handling =================
+    
     if (fileType === "application/pdf") {
       const buffer = fs.readFileSync(filePath);
       const pdfData = await pdfParse(buffer);
       extractedText = pdfData.text;
     }
 
-    // ================= Image Handling (OCR) =================
+    
     else if (fileType.startsWith("image/")) {
       const result = await Tesseract.recognize(filePath, "eng");
       extractedText = result.data.text;
     }
 
-    // ================= Invalid File Type =================
+    
     else {
       if (fs.existsSync(filePath)) {
         fs.unlinkSync(filePath);
@@ -54,7 +54,7 @@ app.post("/upload", upload.single("file"), async (req, res) => {
       });
     }
 
-    // Check if text extraction failed
+    
     if (!extractedText || extractedText.trim() === "") {
       if (fs.existsSync(filePath)) {
         fs.unlinkSync(filePath);
@@ -65,10 +65,10 @@ app.post("/upload", upload.single("file"), async (req, res) => {
       });
     }
 
-    // Analyze content
+  
     const suggestions = analyzeText(extractedText);
 
-    // Safely delete file after processing
+    
     if (fs.existsSync(filePath)) {
       fs.unlinkSync(filePath);
     }
@@ -81,7 +81,7 @@ app.post("/upload", upload.single("file"), async (req, res) => {
   } catch (err) {
     console.error("Error processing file:", err);
 
-    // Attempt cleanup if file exists
+    
     if (req.file && fs.existsSync(req.file.path)) {
       fs.unlinkSync(req.file.path);
     }
