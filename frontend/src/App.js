@@ -24,7 +24,7 @@ function App() {
 
     try {
       const response = await axios.post(
-        "https://social-media-content-analyzer-lmtw.onrender.com",
+        "https://social-media-content-analyzer-lmtw.onrender.com/upload",
         formData
       );
 

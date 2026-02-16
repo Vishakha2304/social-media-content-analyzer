@@ -8,7 +8,13 @@ const cors = require("cors");
 const analyzeText = require("./utils/analyzeText");
 
 const app = express();
-app.use(cors());
+//app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+  })
+);
+
 
 
 const upload = multer({
