@@ -8,6 +8,14 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+  const handleDrop = (e) => {
+  e.preventDefault();
+  if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+    setFile(e.dataTransfer.files[0]);
+  }
+};
+
+
   const handleUpload = async () => {
     if (!file) {
       setError("Please select a file first.");
@@ -102,11 +110,25 @@ function App() {
         Social Media Content Analyzer
       </h2>
 
-      <input
-        type="file"
-        onChange={(e) => setFile(e.target.files[0])}
-        style={{ marginTop: "20px" }}
-      />
+      <div
+  onDragOver={(e) => e.preventDefault()}
+  onDrop={handleDrop}
+  style={{
+    border: "2px dashed #007bff",
+    padding: "20px",
+    textAlign: "center",
+    marginTop: "20px",
+    borderRadius: "8px"
+  }}
+>
+  <p>Drag & Drop file here</p>
+  <p>OR</p>
+  <input
+    type="file"
+    onChange={(e) => setFile(e.target.files[0])}
+  />
+</div>
+
 
       <br /><br />
 
