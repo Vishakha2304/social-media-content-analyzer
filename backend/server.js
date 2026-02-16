@@ -9,13 +9,22 @@ const analyzeText = require("./utils/analyzeText");
 
 const app = express();
 //app.use(cors());
-app.use(
+/*app.use(
   cors({
     origin: "*",
   })
+);*/
+
+
+const cors = require("cors");
+
+app.use(
+  cors({
+    origin: "https://https://social-media-content-analyzer-gd586lwqo-vishakha2304s-projects.vercel.app/",
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type"],
+  })
 );
-
-
 
 const upload = multer({
   dest: "uploads/",
