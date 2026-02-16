@@ -8,27 +8,6 @@ const cors = require("cors");
 const analyzeText = require("./utils/analyzeText");
 
 const app = express();
-//app.use(cors());
-/*app.use(
-  cors({
-    origin: "*",
-  })
-);*/
-
-
-/*const cors = require("cors");
-
-app.use(
-  cors({
-    origin: "https://https://social-media-content-analyzer-gd586lwqo-vishakha2304s-projects.vercel.app/",
-    methods: ["GET", "POST"],
-    allowedHeaders: ["Content-Type"],
-  })
-);*/
-
-
-
-//app.use(cors());
 app.use(
   cors({
     origin: "*",
@@ -41,6 +20,11 @@ app.use(
 const upload = multer({
   dest: "uploads/",
 });
+
+app.get("/", (req, res) => {
+  res.send("Social Media Content Analyzer Backend Running 🚀");
+});
+
 
 
 app.post("/upload", upload.single("file"), async (req, res) => {
