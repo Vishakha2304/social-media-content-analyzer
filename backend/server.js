@@ -16,7 +16,7 @@ const app = express();
 );*/
 
 
-const cors = require("cors");
+/*const cors = require("cors");
 
 app.use(
   cors({
@@ -24,7 +24,12 @@ app.use(
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"],
   })
-);
+);*/
+
+const cors = require("cors");
+
+app.use(cors());
+
 
 const upload = multer({
   dest: "uploads/",
