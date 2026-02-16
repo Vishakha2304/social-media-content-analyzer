@@ -28,7 +28,14 @@ app.use(
 
 
 
-app.use(cors());
+//app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST", "OPTIONS"],
+    allowedHeaders: ["Content-Type"],
+  })
+);
 
 
 const upload = multer({
